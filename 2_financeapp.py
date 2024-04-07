@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-from sklearn.preprocessing import LabelEncoder, StandardScaler
 import streamlit as st
 import joblib
 import matplotlib.pyplot as plt
