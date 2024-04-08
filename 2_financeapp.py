@@ -55,11 +55,16 @@ st.header('Input Variables', divider = True)
 st.dataframe(user_input, use_container_width = True)
 
 #Downloading models
-model_job = pickle.load(open('job_type_pickleencoder.pkl', 'rb'))
-model_education = pickle.load(open('education_level_pickleencoder.pkl', 'rb'))
-model_marital = pickle.load(open('marital_status_pickleencoder.pkl', 'rb'))
-model_country = pickle.load(open('country_pickleencoder.pkl', 'rb'))
-model_rfn = pickle.load(open('model_picklerfn.pkl', 'rb'))
+def load_model(data):
+    model = pickle.load(open(data, 'rb'))
+    return model
+    
+model_job = load_model('job_type_pickleencoder.pkl')
+model_education = load_model('education_level_pickleencoder.pkl')
+model_marital = load_model('marital_status_pickleencoder.pkl')
+model_country = load_model('country_pickleencoder.pkl')
+model_rfn = load_model('model_picklerfn.pkl')
+
 
 #Transforming responses with above models
 user_input['job_type'] = model_job.transform([[jobtype]])
