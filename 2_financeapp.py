@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-import joblib
 import matplotlib.pyplot as plt
 import seaborn as sns
 import warnings
+import pickle
 warnings.filterwarnings('ignore')
 
 st.set_page_config(
@@ -54,25 +54,22 @@ user_input['education_level'] = [educationlevel]
 user_input['marital_status'] = [maritalstatus]
 user_input['country'] = [Country]
 
-
-
 st.markdown("<br>", unsafe_allow_html=True)
 st.header('Input Variables', divider = True)
 st.dataframe(user_input, use_container_width = True)
 
 #Downloading models
-model_job = joblib.load('job_type_encoder.pkl')
-model_education = joblib.load('education_level_encoder.pkl')
-model_marital = joblib.load('marital_status_encoder.pkl')
-model_country = joblib.load('country_encoder.pkl')
-model_rfn = joblib.load('model_rfn.pkl')
+model_job = pickle.load(open('job_type_pickleencoder.pkl', 'rb'))
+model_education = pickle.load(open('education_level_pickleencoder.pkl', 'rb'))
+model_marital = pickle.load(open('marital_status_pickleencoder.pkl', 'rb'))
+model_country = pickle.load(open('country_pickleencoder.pkl', 'rb'))
+model_rfn = pickle.load(open('model_picklerfn.pkl', 'rb'))
 
 #Transforming responses with above models
 user_input['job_type'] = model_job.transform([[jobtype]])
 user_input['education_level'] = model_education.transform([[educationlevel]])
 user_input['marital_status'] = model_marital.transform([[maritalstatus]])
 user_input['country'] = model_country.transform([[Country]])
-
 
 st.markdown("<br>", unsafe_allow_html=True)
 st.header('Transformed Variables', divider = True)
