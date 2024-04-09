@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-from sklearn.preprocessing import LabelEncoder, StandardScaler
 import pickle
 
 st.set_page_config(
