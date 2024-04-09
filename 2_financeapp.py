@@ -1,11 +1,7 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
-import matplotlib.pyplot as plt
-import seaborn as sns
-import warnings
 import pickle
-warnings.filterwarnings('ignore')
 
 st.set_page_config(
     page_title = 'Finance App',
@@ -59,11 +55,11 @@ st.header('Input Variables', divider = True)
 st.dataframe(user_input, use_container_width = True)
 
 #Downloading models
-model_job = pickle.load(open('job_type_pickleencoder.sav', 'rb'))
-model_education = pickle.load(open('education_level_pickleencoder.sav', 'rb'))
-model_marital = pickle.load(open('marital_status_pickleencoder.sav', 'rb'))
-model_country = pickle.load(open('country_pickleencoder.sav', 'rb'))
-model_rfn = pickle.load(open('model_picklerfn.sav', 'rb'))
+model_job = pickle.load(open('job_type_encoder.sav', 'rb'))
+model_education = pickle.load(open('education_level_encoder.sav', 'rb'))
+model_marital = pickle.load(open('marital_status_encoder.sav', 'rb'))
+model_country = pickle.load(open('country_encoder.sav', 'rb'))
+model_rfn = pickle.load(open('model_rfn.sav', 'rb'))
 
 #Transforming responses with above models
 user_input['job_type'] = model_job.transform([[jobtype]])
