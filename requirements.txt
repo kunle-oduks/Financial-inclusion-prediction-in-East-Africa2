@@ -1,2 +1,4 @@
-scikit-learn==<version>
-matplotlib==<version>
+
+streamlit == <version>
+scikit-learn == <version>
+matplotlib == <version>
