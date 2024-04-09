@@ -1,0 +1,2 @@
+streamlit==<version>
+scikit-learn==<version>
