@@ -1,3 +1,2 @@
-streamlit==<version>
 scikit-learn==<version>
 matplotlib==<version>
